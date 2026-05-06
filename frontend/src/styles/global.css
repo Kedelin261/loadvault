@@ -1670,3 +1670,478 @@ body {
 .filter-select:focus {
   border-color: var(--accent);
 }
+
+/* ── Document review: extracted field tags ───────────── */
+
+.field-extracted-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--success);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+.detected-type-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.detected-type-badge.ratecon  { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.detected-type-badge.invoice  { background: #fefce8; color: #854d0e; border: 1px solid #fde68a; }
+.detected-type-badge.bol      { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.detected-type-badge.receipt  { background: #fdf4ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+.detected-type-badge.unknown  { background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+
+.billing-email-notice {
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #78350f;
+}
+
+.billing-email-label {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.billing-email-value {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.form-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ── Contact Hub ─────────────────────────────────────── */
+
+.contact-hub-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  transition: background 0.1s;
+}
+
+.contact-hub-row:hover { background: var(--bg); }
+.contact-hub-row.selected { background: #eff6ff; }
+
+.contact-hub-checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.contact-hub-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-hub-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-hub-role {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.contact-hub-company {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.contact-hub-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.contact-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+.contact-detail-link:hover { color: var(--accent); }
+
+.contact-item-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.contact-hub-row:hover .contact-item-actions { opacity: 1; }
+
+.source-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #6d28d9;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  border-radius: 4px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.contact-chip-more {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Selection bar ───────────────────────────────────── */
+
+.selection-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 6px 4px;
+}
+
+.selection-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.selection-checkbox-wrap input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+/* ── Template variable panel ─────────────────────────── */
+
+.template-vars-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.template-vars-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* ── Truck list ──────────────────────────────────────── */
+
+.truck-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.truck-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.truck-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+.truck-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.truck-card-number {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.truck-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+.truck-vin {
+  font-size: 11px;
+  color: var(--text-light);
+  font-family: monospace;
+}
+
+.truck-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.truck-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.truck-expand-btn:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.truck-record-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+/* ── Maintenance panel ───────────────────────────────── */
+
+.truck-maint-panel {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.truck-maint-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.truck-maint-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.truck-maint-total {
+  font-weight: 700;
+  color: var(--text);
+  margin-left: 6px;
+}
+
+.maint-loading,
+.maint-empty {
+  padding: 20px 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.maint-record-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.maint-record-row:last-child {
+  border-bottom: none;
+}
+
+.maint-record-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.maint-record-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.maint-type-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 5px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.maint-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.maint-desc {
+  font-size: 13px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maint-cost {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.maint-receipt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.1s;
+}
+
+.maint-receipt-link:hover { opacity: 0.75; }
+
+/* ── Maintenance receipt upload button ───────────────── */
+
+.maint-receipt-upload {
+  margin-top: 4px;
+}
+
+.maint-receipt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.maint-receipt-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.maint-receipt-chosen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #166534;
+}
+
+/* ── Email to bar (blast modal) ──────────────────────── */
+
+.email-to-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  background: var(--bg);
+  margin-bottom: 16px;
+}
+
+.email-to-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  flex-shrink: 0;
+}

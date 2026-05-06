@@ -10,6 +10,8 @@ import Upload from './pages/Upload';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Contacts from './pages/Contacts';
+import Trucks from './pages/Trucks';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -34,6 +36,8 @@ function AppRoutes() {
         <Route path="companies/:id" element={<CompanyDetail />} />
         <Route path="loads" element={<Loads />} />
         <Route path="loads/:id" element={<LoadDetail />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="trucks" element={<Trucks />} />
         <Route path="upload" element={<Upload />} />
         <Route path="settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

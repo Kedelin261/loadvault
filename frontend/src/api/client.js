@@ -59,4 +59,22 @@ export const api = {
   },
   confirm: (docId, fields) =>
     request(`/upload/${docId}/confirm`, { method: 'POST', body: JSON.stringify({ fields }) }),
+  uploadForm: async (path, formData) => {
+    const token = getToken();
+    const res = await fetch(`${BASE_URL}${path}`, {
+      method: 'POST',
+      body: formData,
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (res.status === 401) {
+      localStorage.removeItem('lv_token');
+      window.location.href = '/login';
+      return;
+    }
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || `HTTP ${res.status}`);
+    }
+    return res.json();
+  },
 };

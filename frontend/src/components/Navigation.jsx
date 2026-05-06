@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Building2, Truck, Upload, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Building2, Truck, Upload, Settings, LogOut, Users, Wrench } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', Icon: LayoutDashboard },
   { to: '/companies',  label: 'Companies',  Icon: Building2 },
   { to: '/loads',      label: 'Loads',      Icon: Truck },
+  { to: '/contacts',   label: 'Contacts',   Icon: Users },
+  { to: '/trucks',     label: 'Trucks',     Icon: Wrench },
   { to: '/upload',     label: 'Upload',     Icon: Upload },
   { to: '/settings',   label: 'Settings',   Icon: Settings },
 ];

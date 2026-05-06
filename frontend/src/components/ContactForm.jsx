@@ -9,8 +9,8 @@ const EMPTY = {
   notes: '',
 };
 
-export default function ContactForm({ initial = null, onSave, onCancel, loading = false }) {
-  const [form, setForm] = useState(initial ? { ...EMPTY, ...initial } : EMPTY);
+export default function ContactForm({ initial = null, onSave, onCancel, loading = false, companies = [] }) {
+  const [form, setForm] = useState(initial ? { ...EMPTY, ...initial } : { ...EMPTY, companyId: '' });
   const [error, setError] = useState('');
 
   const set = (e) => {
@@ -57,6 +57,16 @@ export default function ContactForm({ initial = null, onSave, onCancel, loading 
           />
         </div>
       </div>
+
+      {companies.length > 0 && (
+        <div className="form-group">
+          <label className="form-label">Company</label>
+          <select className="form-select" name="companyId" value={form.companyId || ''} onChange={set}>
+            <option value="">— No company —</option>
+            {companies.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+          </select>
+        </div>
+      )}
 
       <div className="form-group">
         <label className="form-label">Role / Title</label>

@@ -99,11 +99,13 @@ export default function Upload() {
         <div className="upload-success-banner">
           <CheckCircle size={15} />
           <span>
-            <strong>{successInfo.document.originalName}</strong> saved
-            {successInfo.created.company && ' — new company created'}
-            {successInfo.created.load && ', new load created'}
-            {!successInfo.created.company && successInfo.company && ` — matched to ${successInfo.company.name}`}
-            .
+            <strong>{successInfo.document?.originalName || 'Document'}</strong> saved.
+            {successInfo.created?.company && ' New company created.'}
+            {successInfo.matched?.company && successInfo.company && ` Matched to ${successInfo.company.name}.`}
+            {successInfo.created?.load && ' New load created.'}
+            {successInfo.matched?.load && ' Existing load updated.'}
+            {successInfo.unmatchedInvoice && ' Invoice has no matching load — attach manually.'}
+            {successInfo.created?.contact && ' Contact added.'}
           </span>
           <button className="icon-btn" style={{ marginLeft: 'auto' }} onClick={() => setSuccessInfo(null)}>
             <X size={14} />
