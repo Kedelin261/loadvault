@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// In production VITE_API_URL must be set in .env.production (baked at build time).
+// In development the Vite proxy rewrites /api → localhost:3001, so no env var needed.
+const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '/api' : '');
 
 function getToken() {
   return localStorage.getItem('lv_token');
