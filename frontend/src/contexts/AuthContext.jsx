@@ -11,12 +11,13 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('lv_token');
     if (!token) { setLoading(false); return; }
     api.get('/auth/me')
-      .then((u) => setUser(u))
+      .then((u) => { if (u) setUser(u); })
       .catch(() => localStorage.removeItem('lv_token'))
       .finally(() => setLoading(false));
   }, []);
 
   function login(token, userData) {
+    if (!token) throw new Error('No token returned from server');
     localStorage.setItem('lv_token', token);
     setUser(userData);
   }

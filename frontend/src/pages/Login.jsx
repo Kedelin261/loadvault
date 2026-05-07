@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { api } from '../api/client';
 
 export default function Login() {
   const { login } = useAuth();
@@ -10,19 +9,50 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('STEP 1: handler fired');
+    console.log('ENV:', import.meta.env.VITE_API_URL);
+
     setError('');
     setLoading(true);
+
     try {
-      const res = await api.post('/auth/login', { email, password });
-      login(res.token, res.user);
+      console.log('STEP 2: preparing request');
+
+      const url = `${import.meta.env.VITE_API_URL}/auth/login`;
+      console.log('API URL:', url);
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      console.log('STEP 3: response received', res.status);
+
+      const data = await res.json();
+      console.log('STEP 4: parsed data', data);
+
+      if (!res.ok) {
+        throw new Error(data.error || `Login failed (${res.status})`);
+      }
+
+      const token = data?.token || data?.accessToken || data?.jwt;
+      if (!token) throw new Error('No token returned from server');
+
+      console.log('STEP 5: token stored');
+
+      login(token, data.user);
+      // App.jsx ProtectedRoute redirects to /dashboard once user is set
     } catch (err) {
+      console.error('LOGIN ERROR:', err);
       setError(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="auth-page">

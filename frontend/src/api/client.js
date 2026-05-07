@@ -19,14 +19,11 @@ async function request(path, options = {}) {
 
   const res = await fetch(url, config);
 
-  if (res.status === 401) {
-    localStorage.removeItem('lv_token');
-    window.location.href = '/login';
-    return;
-  }
-
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
+    if (res.status === 401) {
+      localStorage.removeItem('lv_token');
+    }
     throw new Error(body.error || `HTTP ${res.status}`);
   }
 
@@ -48,13 +45,9 @@ export const api = {
       body: formData,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
-    if (res.status === 401) {
-      localStorage.removeItem('lv_token');
-      window.location.href = '/login';
-      return;
-    }
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
+      if (res.status === 401) localStorage.removeItem('lv_token');
       throw new Error(body.error || `HTTP ${res.status}`);
     }
     return res.json();
@@ -68,13 +61,9 @@ export const api = {
       body: formData,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
-    if (res.status === 401) {
-      localStorage.removeItem('lv_token');
-      window.location.href = '/login';
-      return;
-    }
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
+      if (res.status === 401) localStorage.removeItem('lv_token');
       throw new Error(body.error || `HTTP ${res.status}`);
     }
     return res.json();

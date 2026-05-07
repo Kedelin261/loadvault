@@ -17,7 +17,8 @@ export default function Register() {
     setLoading(true);
     try {
       const res = await api.post('/auth/register', { name, email, password });
-      login(res.token, res.user);
+      const token = res?.token || res?.accessToken || res?.jwt;
+      login(token, res?.user);
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {
